@@ -118,4 +118,16 @@ class TvRepositoryImpl implements TvRepository {
     final result = await localDataSource.getWatchlistTv();
     return Right(result.map((data) => data.toEntity()).toList());
   }
+
+  @override
+  Future<Either<Failure, List<Tv>>> searchTv(String q) async {
+    try {
+      final result = await remoteDataSource.searchTvSeries(q);
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on ServerException {
+      return Left(ServerFailure(''));
+    } on SocketException {
+      return Left(ConnectionFailure(StringManager.failedConnect));
+    }
+  }
 }
