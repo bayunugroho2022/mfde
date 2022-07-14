@@ -1,4 +1,4 @@
 # a199-flutter-expert-project
 
-Repository ini merupakan starter project submission kelas Flutter Expert
+Repository ini merupakan project submission kelas Flutter Expert
 
